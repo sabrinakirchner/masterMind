@@ -1,7 +1,7 @@
 
 /* Selectors */
     .item, .selection-item, .history-item {
-      width: 30px;
+      width: 25px;
       height: 25px;
       border-radius: 20px;
     }
@@ -14,7 +14,7 @@
       background-color: blue;
     }
     
-    .yellow {
+    .pink {
       background-color: rgb(223, 93, 173);
     }
     
@@ -23,20 +23,20 @@
     }
     
 
-    /*hints right/wrong*/
+    /*hints right*/
     .full {
       width: 15px;
       height: 15px;
-      background-color: rgb(227, 221, 221);
+      background-color: rgb(67, 3, 56);
       margin: 5px;
 
     }
     
-  
+    
     .half {
       width: 15px;
       height: 15px;
-      background-color: purple;
+      background-color: rgb(186, 173, 186);
       margin: 5px;
     }
 
@@ -46,17 +46,19 @@
       background: #333;
     }
     
+    /*board */
     .mastermind {
       font-family: "Alegreya Sans SC", Arial;
       min-height: 500px;
-      padding: 30px;
+      padding: 50px;
       overflow: hidden;
       position: relative;
     }
     
+    /*board 2*/
     .mastermind-board {
       border-radius: 10px;
-      width: 200px;
+      width: 300px;
       margin: auto;
       padding: 5px 2px;
       background: #84b7e6;
@@ -70,6 +72,7 @@
       margin: 5px 0;
     }
     
+    
     .mastermind-row {
       position: relative;
       padding: 3px;
@@ -78,17 +81,22 @@
     .mastermind-row.current {
       background: #525863;
     }
-    
+
+    /*I need that for the win code*/
     .marbles,
     .pegs {
       display: inline-block;
       vertical-align: middle;
     }
+
+    
     
     .pegs.winning-marbles {
       border: 1px solid #555;
       border-radius: 10px;
     }
+    
+
     
     .marble-crater {
       display: inline-block;
@@ -98,11 +106,14 @@
       border-radius: 50%;
       vertical-align: middle;
       border: 1px solid rgba(255, 255, 255, 0);
-    }
+    } 
+    
     
     .marble-crater.selected {
       box-shadow: 0 0 6px 1px #666;
     }
+    
+
     
     .marble {
       width: 20px;
@@ -113,11 +124,13 @@
       margin: auto;
       vertical-align: middle;
     }
+   
     
     .marble.empty {
       width: 15px;
       height: 15px;
     }
+    
     
     .pegs {
       width: 20px;
@@ -133,7 +146,7 @@
       background: #5C4A4A;
     }
     
-    /*
+    
     .peg.correct {
       background: #de0d0d;
     }
@@ -142,7 +155,6 @@
     .peg.misplaced {
       background: #fff;
     }
-*/
 
 
     /* circles hints*/
@@ -178,7 +190,7 @@
 
     .item{
       flex: 1; 
-      margin: 5px;
+      margin: 10px;
     }
 
     .selection{
@@ -212,7 +224,19 @@
       height: 20px;
       margin-right: 5px;
       margin-bottom: 5px;
+     
     } 
+
+    .hints-line {
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      justify-content: center;
+    }
+
+   
 
     .final-answer{
       width: 30px;

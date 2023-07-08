@@ -11,11 +11,12 @@ const selectedColors = [];
 let guesses = 0;
 
 
+
 //random 
 function randomFinal(){
-    const finalFinal = [...new Array(3)].map(color =>{
-        const random = Math.floor(Math.random() * Math.floor(colors.length));
-        return colors[random]; 
+    const finalFinal = [...new Array(4)].map(color =>{
+    const random = Math.floor(Math.random() * Math.floor(colors.length));
+    return colors[random]; 
 });
 
 console.log(finalFinal);
@@ -27,10 +28,11 @@ btnSelector.forEach(btn => {
     btn.addEventListener('click', () => selectorColor(color));
 });
 
+
 function selectorColor(color){
     console.log(color);
     
-    //dom WORK
+    //dom work
     const div = document.createElement('div'); 
     div.classList.add('selection-item'); 
     div.classList.add(color); 
@@ -47,7 +49,7 @@ function selectorColor(color){
 
     }
     const hintArray = calculateHints(selectedColors); 
-    
+
 
     for(const hint of hintArray) {
     const el = document.createElement('div'); 
@@ -57,16 +59,53 @@ function selectorColor(color){
         el.classList.add("half"); 
     }
     hintsSelector.appendChild(el);
+    
 }
 
+
+    //hints lines
+    const newLine = document.createElement('div');
+    newLine.classList.add('hints-line');
+    hintsSelector.appendChild(newLine);
+
+    
     selectedColors.length = 0;
     selectionSelector.innerHTML = "";
-    if(guesses > 7){
-    alert('you lose!');
+    if(guesses > 8){
     } 
 
-    if(hintArray.every(hint === 'full') && hintArray.length === final.length){ 
-    alert('you win'); 
+
+
+    //lose check 
+    if (guesses === 8) {
+        const loseMessage = document.createElement('div');
+        loseMessage.textContent = 'You lose! The answer was: ' + final.join(' ');
+
+        // answers in the answer box 
+        const finalAnswerElement = document.getElementById('final-answer');
+        finalAnswerElement.appendChild(loseMessage);
+
+        console.log(final); // Display the final answer in the console
+        showFinalAnswer();
+        return;
+
+    }
+
+
+    //win answer. 
+    if(hintArray.every((hint) => hint === 'full') && hintArray.length === final.length){ 
+        const winMessage = document.createElement('div');
+        winMessage.textContent = 'You win! The answer was: ' + final.join(' ');
+
+
+        //answer inside the answer box 
+        const finalAnswerElement = document.getElementById('final-answer');
+        finalAnswerElement.appendChild(winMessage);
+    
+ 
+        console.log(final); // Display the final answer in the console
+        showFinalAnswer();
+        return; // Exit the function
     
         }
     }
@@ -76,17 +115,20 @@ function selectorColor(color){
 function calculateHints(colors) {
     const hints = []; 
     const dublicateCheck = []; 
+     
 
-    colors.forEach((color, index) => {
-    if(final[index] === color){
+colors.forEach((color, index) => {
+    if(color === final[index]){
         hints.push("full");
-        dublicateCheck.push(color); 
+        dublicateCheck.push(color);
+
     } 
+
 });
 
 colors.forEach((color, index) => {
     if(!dublicateCheck.includes(color) && final.includes(color)){
-    hints.push("half");
+        hints.push("half");
     }
 
 }); 
@@ -95,9 +137,13 @@ return hints;
 
 }
 
+
+
 function getFinalAnswer(){
     return final;
 }
+
+
 // Update the display of final answer
 const finalAnswerElement = document.getElementById('final-answer');
 finalAnswerElement.textContent = getFinalAnswer().join('');
