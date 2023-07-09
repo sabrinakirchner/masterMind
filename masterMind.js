@@ -10,6 +10,9 @@ let final = randomFinal();
 const selectedColors = [];
 let guesses = 0;
 
+//to brak it 
+let gameEnded = false;
+
 
 
 //random 
@@ -31,7 +34,12 @@ btnSelector.forEach(btn => {
 
 function selectorColor(color){
     console.log(color);
-    
+
+    //to break it after eight trys 
+    if (hasGameEnded()){
+        return;
+    }
+
     //dom work
     const div = document.createElement('div'); 
     div.classList.add('selection-item'); 
@@ -47,10 +55,21 @@ function selectorColor(color){
     historyDiv.classList.add(selColor); 
     hintsSelector.appendChild(historyDiv);
 
+
+
+//to break it after 8 wrong try 
+    if (guesses >= 9 || hasGameEnded()) {
+        endGame();
+        return;
+      }
+
+    if (hasGameEnded()) {
+        return;
+      }
+
     }
     const hintArray = calculateHints(selectedColors); 
-
-
+        
     for(const hint of hintArray) {
     const el = document.createElement('div'); 
     if(hint === "full"){
@@ -61,6 +80,7 @@ function selectorColor(color){
     hintsSelector.appendChild(el);
     
 }
+
 
 
     //hints lines
@@ -75,38 +95,45 @@ function selectorColor(color){
     } 
 
 
-
     //lose check 
     if (guesses === 8) {
         const loseMessage = document.createElement('div');
-        loseMessage.textContent = 'You lose! The answer was: ' + final.join(' ');
+        loseMessage.textContent = 'You lose! The answer is:  ' + final.join(' ');
+        
 
         // answers in the answer box 
         const finalAnswerElement = document.getElementById('final-answer');
         finalAnswerElement.appendChild(loseMessage);
 
-        console.log(final); // Display the final answer in the console
+        // Display the final answer 
+        console.log(final);
         showFinalAnswer();
+     
+        //should exit the func
         return;
-
+        
     }
 
 
     //win answer. 
     if(hintArray.every((hint) => hint === 'full') && hintArray.length === final.length){ 
         const winMessage = document.createElement('div');
-        winMessage.textContent = 'You win! The answer was: ' + final.join(' ');
-
+        //winMessage.textContent = 'You win! The answer is:  ' + final.join(' ');
+        
 
         //answer inside the answer box 
         const finalAnswerElement = document.getElementById('final-answer');
         finalAnswerElement.appendChild(winMessage);
-    
- 
-        console.log(final); // Display the final answer in the console
+
+        // Display the final answer
+        console.log(final); 
+        
+        endGame();{
+            winMessage.textContent = 'You win! The answer is:  ' + final.join(' ');  
+        } //Exit the function
+        
         showFinalAnswer();
-        return; // Exit the function
-    
+        return;
         }
     }
 
@@ -138,7 +165,6 @@ return hints;
 }
 
 
-
 function getFinalAnswer(){
     return final;
 }
@@ -149,3 +175,14 @@ const finalAnswerElement = document.getElementById('final-answer');
 finalAnswerElement.textContent = getFinalAnswer().join('');
 
 
+// end the game after 8 plays 
+function endGame() {
+    gameEnded = true;
+    // Perform any necessary actions when the game ends
+    console.log("Game over!");
+  }
+  function hasGameEnded() {
+    return gameEnded;
+  }
+
+  

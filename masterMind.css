@@ -1,4 +1,3 @@
-
 /* Selectors */
     .item, .selection-item, .history-item {
       width: 25px;
@@ -36,7 +35,7 @@
     .half {
       width: 15px;
       height: 15px;
-      background-color: rgb(186, 173, 186);
+      background-color: rgb(139, 184, 100);
       margin: 5px;
     }
 
@@ -45,7 +44,7 @@
     body {
       background: #333;
     }
-    
+
     /*board */
     .mastermind {
       font-family: "Alegreya Sans SC", Arial;
@@ -150,10 +149,9 @@
     .peg.correct {
       background: #de0d0d;
     }
-    
 
     .peg.misplaced {
-      background: #fff;
+      background: #79711a;
     }
 
 
@@ -166,7 +164,7 @@
       user-select: none;
       border-radius: 10px;
       background: #ac2424;
-      border: 1px solid #aaa;
+      border: 1px solid #32a333;
       box-shadow: 1px 1px 4px 1px rgba(122, 122, 122, .8);
       padding: 3px;
     }
@@ -230,19 +228,17 @@
     .hints-line {
       width: 100%;
       height: 1px;
-      background-color: #ccc;
+      background-color: #6e2b2b;
       margin-top: 5px;
       margin-bottom: 5px;
       justify-content: center;
     }
 
-   
 
     .final-answer{
       width: 30px;
       height: 25px;
       border-radius: 20px;
     }
-   
 
 
