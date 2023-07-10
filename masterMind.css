@@ -6,19 +6,19 @@
     }
     
     .orange {
-      background-color: rgb(218, 180, 103);
+      background-color: rgb(187, 119, 41);
     }
     
     .blue {
-      background-color: blue;
+      background-color: rgb(66, 66, 193);
     }
     
     .pink {
-      background-color: rgb(223, 93, 173);
+      background-color: rgb(213, 124, 179);
     }
     
     .green {
-      background-color: green;
+      background-color: rgb(27, 118, 27);
     }
     
 
@@ -42,7 +42,7 @@
 
     /* Mastermind Styles */
     body {
-      background: #333;
+      background: #112917;
     }
 
     /*board */
@@ -60,9 +60,9 @@
       width: 300px;
       margin: auto;
       padding: 5px 2px;
-      background: #84b7e6;
+      background: #1a3048;
       border: 10px solid #7e2424;
-      box-shadow: 2px 2px 5px 10px rgba(49, 22, 119, 0.37);
+      box-shadow: 2px 2px 5px 10px rgba(186, 69, 69, 0.37);
       text-align: center;
     }
     
@@ -78,7 +78,7 @@
     }
     
     .mastermind-row.current {
-      background: #525863;
+      background: #34486d;
     }
 
     /*I need that for the win code*/
@@ -91,7 +91,7 @@
     
     
     .pegs.winning-marbles {
-      border: 1px solid #555;
+      border: 1px solid #36d125b2;
       border-radius: 10px;
     }
     
@@ -104,7 +104,7 @@
       text-align: center;
       border-radius: 50%;
       vertical-align: middle;
-      border: 1px solid rgba(255, 255, 255, 0);
+      border: 1px solid rgba(155, 107, 107, 0);
     } 
     
     
@@ -152,6 +152,13 @@
 
     .peg.misplaced {
       background: #79711a;
+    }
+
+
+    
+    /*color of the writings*/
+    .custom-heading {
+      color: rgb(219, 219, 219);
     }
 
 
@@ -239,6 +246,52 @@
       width: 30px;
       height: 25px;
       border-radius: 20px;
+    }
+
+
+    /*scroll bar section*/
+    .hints {
+      display: flex;
+      flex-wrap: wrap;
+      max-height: 200px; 
+      overflow-y: auto;
+    }
+
+    .hints::-webkit-scrollbar {
+      width: 8px; /* Width */
+    }
+    
+    .hints::-webkit-scrollbar-track {
+      background: #100f0f; /* Background color */
+    }
+    
+    .hints::-webkit-scrollbar-thumb {
+      background: #1c517d; /* Color of the scrollbar  */
+      border-radius: 4px; /* Radius  */
+    }
+    
+    .hints::-webkit-scrollbar-thumb:hover {
+      background: #555; /* Color of the scrollbar */
+    }
+
+
+    /*reset button*/
+    #reset-button {
+      background-color: #221c1b;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    #reset-button:hover {
+      background-color: #d32f2f;
+    }
+    
+    #reset-button:focus {
+      outline: none;
     }
 
 

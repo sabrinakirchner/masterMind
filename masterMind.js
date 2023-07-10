@@ -2,13 +2,17 @@
 const btnSelector = document.querySelectorAll('.item'); 
 const selectionSelector = document.querySelector('.selection');
 const hintsSelector = document.querySelector(".hints");
-
+const resetButton = document.getElementById('reset-button');
+ 
 
 //vars
 const colors = ['orange','pink','blue', 'green']; 
 let final = randomFinal();
 const selectedColors = [];
 let guesses = 0;
+
+
+
 
 //to brak it 
 let gameEnded = false;
@@ -17,16 +21,16 @@ let gameEnded = false;
 
 //random 
 function randomFinal(){
-    const finalFinal = [...new Array(4)].map(color =>{
+    const finalFinal = [...new Array(4)].map((color) =>{
     const random = Math.floor(Math.random() * Math.floor(colors.length));
     return colors[random]; 
 });
 
 console.log(finalFinal);
-    return finalFinal; 
+return finalFinal; 
 }
 
-btnSelector.forEach(btn => {
+btnSelector.forEach((btn) => {
     const color = btn.classList[1];
     btn.addEventListener('click', () => selectorColor(color));
 });
@@ -54,6 +58,10 @@ function selectorColor(color){
     historyDiv.classList.add('history-item'); 
     historyDiv.classList.add(selColor); 
     hintsSelector.appendChild(historyDiv);
+
+    //reset 
+    resetButton.onclick = resetGame;
+ 
 
 
 
@@ -159,9 +167,7 @@ colors.forEach((color, index) => {
     }
 
 }); 
-
 return hints; 
-
 }
 
 
@@ -178,11 +184,35 @@ finalAnswerElement.textContent = getFinalAnswer().join('');
 // end the game after 8 plays 
 function endGame() {
     gameEnded = true;
-    // Perform any necessary actions when the game ends
-    console.log("Game over!");
+
   }
   function hasGameEnded() {
     return gameEnded;
   }
 
+
+//reset button
+  function resetGame() {
+    // Clear the selection
+    selectedColors.length = 0;
+    selectionSelector.innerHTML = '';
+
+    location.reload();
+    // Clear the hints
+    hintsSelector.innerHTML = '';
   
+    // Reset the guesses count
+    guesses = 0;
+    gameEnded = false;
+    final = randomFinal();
+        
+
+    finalAnswerElement.textContent = "";
+
+    const winLoseMessage = document.querySelector('.win-lose-message');
+     if (winLoseMessage) {
+        winLoseMessage.remove();
+    }
+
+  }
+
